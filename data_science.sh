@@ -4,7 +4,8 @@
 conda deactivate currentenv
 conda create -n envname python=x.x otherspecific versions
 conda activate envname
-
+## default installation
+conda create -n ds seaborn ipykernel
 # list packages
 conda list
 
