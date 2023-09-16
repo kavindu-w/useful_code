@@ -4,14 +4,20 @@
 conda deactivate currentenv
 conda create -n envname python=x.x otherspecific versions
 conda activate envname
-## default installation
+# data science python 3.6 env
+conda create -n ds python=3.6 pandas=0.24 numpy=1.17 scikit-learn=0.22 seaborn ipykernel
+# default installation
 conda create -n ds seaborn ipykernel
+# dse_prj with osmnx
+conda create -n dse_prj -c conda-forge --strict-channel-priority osmnx
 # list packages
 conda list
 
-# install packages after install
-conda install -n yourenvname package
+# install packages after install(activate relevant env)
+conda install seaborn ipykernel
 
+# update
+conda update -n base -c defaults conda
 
 # using yml file(conda) , use requirements.txt for pip users
 conda env create -f environment.yml
