@@ -10,6 +10,12 @@ conda create -n ds python=3.6 pandas=0.24 numpy=1.17 scikit-learn=0.22 seaborn i
 conda create -n ds seaborn ipykernel
 # dse_prj with osmnx
 conda create -n dse_prj -c conda-forge --strict-channel-priority osmnx
+
+## progress bar
+conda install -c conda-forge tqdm
+# use case
+for terminal_index, terminal_row in tqdm(df.iterrows(), desc="Extracting POI features", unit="terminal", colour="green", total=len(df)):
+
 # list packages
 conda list
 
