@@ -25,6 +25,16 @@ conda install seaborn ipykernel
 # update
 conda update -n base -c defaults conda
 
+## git bash conda fix
+# add to .profile folder in win/users/username/
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+eval "$('/c/Users/5400/anaconda3/Scripts/conda.exe' 'shell.bash' 'hook')"
+# <<< conda initialize <<<
+
+
+
 # using yml file(conda) , use requirements.txt for pip users
 conda env create -f environment.yml
 # create following yml file in the code directory and run above code
