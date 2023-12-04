@@ -1,3 +1,8 @@
+## pip virtual environment
+
+python -m venv venv
+source venve/bin/activate
+#########################
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
 
 # don't forget to deactivate current env
