@@ -1,8 +1,8 @@
 ## pip virtual environment
 
-$ python -m venv venv
-$ source venve/bin/activate
-$ pip3 install -r requirements.txt
+python -m venv venv
+source venve/bin/activate
+pip3 install -r requirements.txt
 #########################
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
 
