@@ -3,6 +3,10 @@
 python -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+
+# to find the version of specific module
+pip freeze | grep h2o(module_name)
+
 #########################
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
 
