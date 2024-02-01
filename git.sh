@@ -37,3 +37,6 @@ git push --force
 -----------------
 # untrack a file after committed to git (updated gitignore)
 git update-index --assume-unchanged <filename>
+# for directories
+cd dir
+ls | xargs -l git update-index --assume-unchanged
