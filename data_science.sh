@@ -17,7 +17,7 @@ conda activate envname
 # data science python 3.6 env
 conda create -n ds python=3.6 pandas=0.24 numpy=1.17 scikit-learn=0.22 seaborn ipykernel
 # default installation
-conda create -n ds seaborn ipykernel
+conda create -n ds seaborn ipykernel scikit-learn
 # dse_prj with osmnx
 conda create -n dse_prj -c conda-forge --strict-channel-priority osmnx
 
