@@ -1,7 +1,8 @@
 ## pip virtual environment
 
 python -m venv venv
-source venv/bin/activate
+.\venv\Scripts\activate # for windows
+source venv/bin/activate # for others
 pip3 install -r requirements.txt
 
 # to find the version of specific module
