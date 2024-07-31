@@ -7,7 +7,7 @@ pip3 install -r requirements.txt
 
 # to find the version of specific module
 pip freeze | grep h2o(module_name)
-
+pip list | findstr shap # for windows
 #########################
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
 
