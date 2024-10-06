@@ -8,7 +8,14 @@ pip3 install -r requirements.txt
 # to find the version of specific module
 pip freeze | grep h2o(module_name)
 pip list | findstr shap # for windows
+
 #########################
+# check python version
+py --list
+# install specific version of python environment
+python 3.10 -m venv venv 
+
+##############
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
 
 # don't forget to deactivate current env
