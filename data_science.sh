@@ -8,7 +8,8 @@ pip3 install -r requirements.txt
 # to find the version of specific module
 pip freeze | grep h2o(module_name)
 pip list | findstr shap # for windows
-
+# add the version directly to the requirements
+pip freeze | grep <module_name> >> requirements.txt
 #########################
 # check python version
 py --list
