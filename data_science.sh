@@ -14,7 +14,8 @@ pip freeze | grep <module_name> >> requirements.txt
 # check python version
 py --list
 # install specific version of python environment
-python 3.10 -m venv venv 
+# first add the python versions to system path (C:\Users\<name>\AppData\Local\Programs\Python\Python310\Scripts, and C:\Users\<name>\AppData\Local\Programs\Python\Python310\)
+py -3.9 -m venv venv
 
 ##############
 ## use anaconda prompt as admin(vscode one sometimes not work -> access rights issues)
