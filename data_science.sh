@@ -59,3 +59,23 @@ conda config --set auto_activate_base False
 
 # using yml file(conda) , use requirements.txt for pip users
 conda env create -f environment.yml
+
+
+#################### notebook paths
+import os
+
+# Print the current working directory
+print(f"Current working directory: {os.getcwd()}")
+
+# Correct the path and use os.path.join to construct it
+persona_path = os.path.join("..", "environment", "frontend_server", "storage", "the_cafe", "personas", "John Doe")
+
+# Get the absolute path
+absolute_persona_path = os.path.abspath("../environment/frontend_server/storage/the_cafe/personas/John Doe")
+
+# Print the constructed path to verify
+print(f"Constructed persona path: {absolute_persona_path}")
+
+# Check if the path exists
+if not os.path.exists(absolute_persona_path):
+    raise FileNotFoundError(f"The path {absolute_persona_path} does not exist.")
