@@ -40,3 +40,6 @@ git update-index --assume-unchanged <filename>
 # for directories
 cd dir
 ls | xargs -l git update-index --assume-unchanged
+-----------------
+# disable filename too long warning in windows
+git config --global core.longpaths true
