@@ -10,6 +10,8 @@ pip freeze | grep h2o(module_name)
 pip list | findstr shap # for windows
 # add the version directly to the requirements
 pip freeze | grep <module_name> >> requirements.txt
+# push all the installed packages to the requirement file
+pip list  --format=freeze > requirements.txt
 #########################
 # check python version
 py --list
