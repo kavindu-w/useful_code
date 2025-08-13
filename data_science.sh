@@ -40,6 +40,8 @@ for terminal_index, terminal_row in tqdm(df.iterrows(), desc="Extracting POI fea
 
 # list packages
 conda list
+# create a requirements.txt file from installed
+pip list --format=freeze > requirements.txt
 
 # install packages after install(activate relevant env)
 conda install seaborn ipykernel
