@@ -1,37 +1,54 @@
-Firefly III Setup
+Firefly III Setup (Finance Manager)
 
 1. Google cloud VM (free tier)
 2. Copy the docker compose files, env files (edit accordingly)
-3. sudo apt update
+3. 
+```bash
+sudo apt update
 sudo apt install -y docker.io docker-compose
 sudo systemctl enable docker
 sudo systemctl start docker
-4. mkdir ~/firefly
+```
+4. 
+```bash
+mkdir ~/firefly
 cd ~/firefly
-5. send notifications via email (edit env file)
-     # Email (Gmail SMTP)
-      MAIL_MAILER: smtp
-      MAIL_HOST: smtp.gmail.com
-      MAIL_PORT: 587
-      MAIL_FROM: youraddress@gmail.com
-      MAIL_USERNAME: youraddress@gmail.com
-      MAIL_PASSWORD: your_app_password_here
-      MAIL_ENCRYPTION: tls
-6. sudo docker-compose down
+```
+5. send notifications via email (edit env file) - gmail setup
+```
+MAIL_MAILER: smtp
+MAIL_HOST: smtp.gmail.com
+MAIL_PORT: 587
+MAIL_FROM: youraddress@gmail.com
+MAIL_USERNAME: youraddress@gmail.com
+MAIL_PASSWORD: your_app_password_here
+MAIL_ENCRYPTION: tls
+```
+6. 
+```bash
+sudo docker-compose down
 sudo docker-compose up -d
+```
 7. change random mysql root pw to no
 8. run following to fix the access denied issue in mariadb
+```bash
 docker exec -it firefly_iii_db mariadb -u root -p
+```
 9. provide root as the pw
 10. inside the root@db shell
+```sql
 GRANT ALL PRIVILEGES ON firefly.* TO 'firefly'@'%' IDENTIFIED BY '<mysql pw set on env files>';
 FLUSH PRIVILEGES;
-11. docker-compose down
+```
+11.
+```bash
+docker-compose down
 docker-compose up -d
 docker-compose logs -f
+```
 12. add a firewall rule to gcloud vpc
   Name: allow-firefly
   Targets: All instances in the network (or just your VM)
   Source IP: 0.0.0.0/0 (or your IP range for security)
   Protocols and ports: TCP:8080
-13. go to http://<EXTERNAL_IP - take from gcloud vm network info (also allow http/https -don't know if optional> 
+13. go to http://<EXTERNAL_IP> - take from gcloud vm network info (also allow http/https -don't know if optional)
