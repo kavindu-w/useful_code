@@ -60,3 +60,10 @@ done
 # install brew
 brew install iproute2mac
 ```
+-----------------
+# other commands for mac
+```bash
+# zip and ignore ds_store files
+zip -r test.zip NLLB/test -x "*.DS_Store"
+```
+
