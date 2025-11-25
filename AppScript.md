@@ -2,31 +2,50 @@
 
 ```gs
 // List of cells to jump through
-const TARGETS =[  'H7588', 'H7693', 'H8134', 'H8348', 'H8713', 'H8840', 'H9520', 'H9818', 'H10205', 'H10376', 'H10566'];
+const TARGETS =['G4', 'G988', 'G999', 'G2545', 'G3366', 'G3970', 'G7301', 'G8199', 'G11962', 'G11977', 'G17941', 'G21667'];
 
 function onOpen() {
-  // Create a custom menu in the toolbar
   SpreadsheetApp.getUi()
     .createMenu('Jump')
     .addItem('Next Target', 'jumpToNext')
+    .addItem('Reset', 'resetJump')
     .addToUi();
 }
 
-function jumpToNext() {
-  const sheet = SpreadsheetApp.getActiveSheet();
-  const activeCell = sheet.getActiveCell();
-  const currentA1 = activeCell.getA1Notation();
-  const idx = TARGETS.indexOf(currentA1);
-
-  if (idx === -1) {
-    // If not currently on any target, go to the first one
-    sheet.setActiveRange(sheet.getRange(TARGETS[0]));
-  } else if (idx < TARGETS.length - 1) {
-    // Go to next cell in list
-    sheet.setActiveRange(sheet.getRange(TARGETS[idx + 1]));
-  } else {
-    // If at the last, loop back to the first
-    sheet.setActiveRange(sheet.getRange(TARGETS[0]));
-  }
+function resetJump() {
+  PropertiesService.getDocumentProperties().deleteProperty("jumpIndex");
+  SpreadsheetApp.getActive().toast("Jump index reset");
 }
+function jumpToNext() {
+  const props = PropertiesService.getDocumentProperties();
+  let idx = Number(props.getProperty("jumpIndex") || 0);
+
+  const sheet = SpreadsheetApp.getActiveSheet();
+  const range = sheet.getRange(TARGETS[idx]);
+
+  const firstRow = range.getRow();
+  const col = range.getColumn();
+
+  const rowsBelow = 5; // number of rows you want to see below the target
+  const lastRow = sheet.getMaxRows();
+  
+  // Calculate a row to scroll so that some rows below target are visible
+  const scrollRow = Math.max(1, firstRow - 2); // scroll a bit above target
+  const tempRow = Math.min(firstRow + rowsBelow, lastRow); // row below target
+
+  // Temporarily select the row below to scroll
+  sheet.setActiveSelection(sheet.getRange(tempRow, col));
+  SpreadsheetApp.flush(); // apply scroll
+
+  // Re-select the actual target cell
+  range.activate();
+
+  // Update index for next jump
+  idx = (idx + 1) % TARGETS.length;
+  props.setProperty("jumpIndex", idx);
+}
+
+
+
+
 ```
