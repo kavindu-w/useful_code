@@ -2,8 +2,8 @@
 ```bash
 rm <file name>
 df -h ~ #disk usage - user
-du -sh <dir> #permission for the directory
-ls -lh <dir/file> # file size
+du -sh <dir> # file size human readable (GB ...)
+ls -lh <dir/file> #permission for the directory
 free -h # free RAM
 lscpu | grep -E '^Thread|^Core|^Socket|^CPU\(' #CPU info
 ```
@@ -77,5 +77,6 @@ brew install iproute2mac
 # zip and ignore ds_store files
 zip -r test.zip NLLB/test -x "*.DS_Store"
 ```
+
 
 
