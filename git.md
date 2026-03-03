@@ -57,3 +57,12 @@ ls | xargs -l git update-index --assume-unchanged
 ```bash
 git config --global core.longpaths true
 ```
+-----------------
+# clone public repo and push to private
+```bash
+# create a blank repo without readme via website
+# cd to repo
+git remote set-url origin https://github.com/YOUR_USERNAME/<newly created repo name>.git
+git branch -M main  # Rename branch to main if needed
+git push -u origin main
+```
