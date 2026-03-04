@@ -1,3 +1,17 @@
+# tmux commands
+```bash
+# tmux session (run process in a separate session (reattach if disconnected))
+tmux new -s myjob
+
+# To leave it running and return to your local prompt, detach with Ctrl-b then d. tmux keeps the session alive on the server.
+# reconnect via SSH and reattach with 
+tmux attach -t myjob
+# list sessions with 
+tmux ls
+# When the job finishes and you no longer need the session, exit the shell inside tmux (exit) or press Ctrl-b then : and type kill-session -t myjob.
+
+```
+
 # basic commands
 ```bash
 rm <file name>
@@ -77,6 +91,7 @@ brew install iproute2mac
 # zip and ignore ds_store files
 zip -r test.zip NLLB/test -x "*.DS_Store"
 ```
+
 
 
 
