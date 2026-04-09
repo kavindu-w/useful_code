@@ -1,3 +1,16 @@
+# Create a new repo (Sub directory of an existing repo) and push all the files via CLI
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+brew install gh
+gh auth login
+gh repo create your-repo-name --private --source=. --remote=origin --push
+git remote add origin https://github.com/YOUR_USERNAME/your-repo-name.git
+git branch -M main
+git push -u origin main
+```
+-----------------
 # update from git bash
 ```bash
 git update-git-for-windows
