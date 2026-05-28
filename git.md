@@ -69,6 +69,20 @@ ls | xargs -l git update-index --assume-unchanged
 git rm -r --cached <file name>
 git commit -m "Remove <file name> from repository and add to .gitignore"
 git push origin HEAD
+
+# remove file history and delete from repo
+1. Purge the file from all history
+git filter-repo --path notebooks/<name>.ipynb --invert-paths
+2. Re-add the remote (filter-repo strips it)
+git remote add origin https://github.com/kavindu-w/<repo name>.git
+3. Fetch so git knows about remote branches
+git fetch origin
+4. Re-set upstream tracking on both branches
+git branch --set-upstream-to=origin/main main
+git branch --set-upstream-to=origin/development development
+5. Force-push both branches
+git push --force-with-lease origin main
+git push --force-with-lease origin development
 ```
 -----------------
 # disable filename too long warning in windows
