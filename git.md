@@ -64,6 +64,11 @@ git update-index --assume-unchanged <filename>
 # for directories
 cd dir
 ls | xargs -l git update-index --assume-unchanged
+
+# then remove that from the repo (not locally)
+git rm -r --cached <file name>
+git commit -m "Remove <file name> from repository and add to .gitignore"
+git push origin HEAD
 ```
 -----------------
 # disable filename too long warning in windows
