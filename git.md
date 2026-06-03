@@ -63,7 +63,7 @@ git push --force
 git update-index --assume-unchanged <filename>
 # for directories
 cd dir
-ls | xargs -l git update-index --assume-unchanged
+git ls-files | xargs git update-index --assume-unchanged
 
 # then remove that from the repo (not locally)
 git rm -r --cached <file name>
