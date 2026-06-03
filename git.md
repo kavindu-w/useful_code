@@ -61,6 +61,10 @@ git push --force
 # untrack a file after committed to git (updated gitignore)
 ```bash
 git update-index --assume-unchanged <filename>
+
+# reverse (retrack)
+git ls-files | xargs git update-index --no-assume-unchanged
+
 # for directories
 cd dir
 git ls-files | xargs git update-index --assume-unchanged
