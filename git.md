@@ -71,7 +71,7 @@ git commit -m "Remove <file name> from repository and add to .gitignore"
 git push origin HEAD
 
 # remove file history and delete from repo
-1. Purge the file from all history
+1. Purge the file/folder from all history
 git filter-repo --path notebooks/<name>.ipynb --invert-paths
 2. Re-add the remote (filter-repo strips it)
 git remote add origin https://github.com/kavindu-w/<repo name>.git
@@ -79,7 +79,8 @@ git remote add origin https://github.com/kavindu-w/<repo name>.git
 git fetch origin
 4. Re-set upstream tracking on both branches
 git branch --set-upstream-to=origin/main main
-git branch --set-upstream-to=origin/development development
+# set all branches if any
+git branch --set-upstream-to=origin/development development 
 5. Force-push both branches
 git push --force-with-lease origin main
 git push --force-with-lease origin development
