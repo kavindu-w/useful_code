@@ -39,10 +39,6 @@ __pycache__/
 # notebooks
 .ipynb_checkpoints/
 
-# data (raw/processed are usually regenerated, not committed)
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-
 # misc
 .env
 .DS_Store
