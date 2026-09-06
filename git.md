@@ -74,20 +74,27 @@ git rm -r --cached <file name>
 git commit -m "Remove <file name> from repository and add to .gitignore"
 git push origin HEAD
 
-# remove file history and delete from repo
-1. Purge the file/folder from all history
-git filter-repo --path notebooks/<name>.ipynb --invert-paths
-2. Re-add the remote (filter-repo strips it)
-git remote add origin https://github.com/kavindu-w/<repo name>.git
-3. Fetch so git knows about remote branches
+# ---- Purge a file/folder from git history ----
+#
+# Prereqs: git-filter-repo installed, and a clean working tree
+# (commit or stash pending changes first — filter-repo refuses to run dirty).
+
+# 1. Purge the file/folder from all history
+git filter-repo --path notebooks/<name>.ipynb --invert-paths --force
+
+# 2. Re-add the remote (filter-repo strips it for safety)
+git remote add origin https://github.com/kavindu-w/<repo-name>.git
+
+# 3. Fetch so git knows about remote branches
 git fetch origin
-4. Re-set upstream tracking on both branches
+
+# 4. Re-set upstream tracking on main
 git branch --set-upstream-to=origin/main main
-# set all branches if any
-git branch --set-upstream-to=origin/development development 
-5. Force-push both branches
+
+# 5. Force-push main (force-with-lease is safer than plain --force —
+#    it aborts if origin/main moved since your last fetch)
 git push --force-with-lease origin main
-git push --force-with-lease origin development
+
 ```
 -----------------
 # disable filename too long warning in windows
