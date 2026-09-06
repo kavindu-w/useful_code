@@ -20,6 +20,8 @@ mkdir -p notebooks
 
 # keep otherwise-empty/ignored data dirs visible in git
 touch data/raw/.gitkeep data/processed/.gitkeep data/final/.gitkeep
+touch notebooks/.gitkeep
+touch TODO.md
 
 # ---- Python version pin, resolved through pyenv -------------------------
 export PYENV_ROOT="${PYENV_ROOT:-$HOME/.pyenv}"
@@ -38,8 +40,6 @@ __pycache__/
 .ipynb_checkpoints/
 
 # data (raw/processed are usually regenerated, not committed)
-data/raw/*
-data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
